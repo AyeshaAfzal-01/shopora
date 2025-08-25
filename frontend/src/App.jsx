@@ -10,7 +10,7 @@ import Orders from './pages/Orders'
 
 const App = () => {
   return (
-    <div className='px-6'>
+    <div className='px-2'>
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
