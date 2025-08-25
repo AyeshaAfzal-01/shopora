@@ -16,6 +16,9 @@ import skincare_icon from './skincare_icon.png'
 import sports_icon from './sports_icon.png'
 import topwear_icon from './topwear_icon.png'
 import winter_icon from './winter_icon.png'
+import shopping from './shopping.png'
+import rings from './rings.png'
+import heels from './heels.png'
 
 import p_img1 from './p_img1.png'
 import p_img2_1 from './p_img2_1.png'
@@ -92,7 +95,10 @@ export const assets = {
     skincare_icon,
     sports_icon,
     topwear_icon,
-    winter_icon
+    winter_icon,
+    shopping,
+    rings,
+    heels
 }
 
 export const products = [
