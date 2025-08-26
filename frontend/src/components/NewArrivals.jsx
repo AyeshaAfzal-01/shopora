@@ -14,7 +14,7 @@ const NewArrivals = () => {
         }
     }, [products])
     return (
-        <div className='my-12 sm:px-12 text-gray-700'>
+        <div className='my-12 px-2 md:px-6 lg:px-12 text-gray-700'>
             <h2 className='text-lg sm:text-3xl font-bold mb-3'>New Arrivals</h2>
             <div className='grid grid-cols-3 lg:grid-cols-5 gap-2 md:gap-3'>
                 {
