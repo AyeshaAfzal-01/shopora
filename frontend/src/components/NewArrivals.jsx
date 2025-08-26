@@ -10,7 +10,6 @@ const NewArrivals = () => {
         if (products.length > 0) {
             const latest = products.slice(0,5)
             setNewArrivals(latest)
-            console.log(latest)
         }
     }, [products])
     return (

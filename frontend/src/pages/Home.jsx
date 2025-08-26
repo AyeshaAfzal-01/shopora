@@ -3,6 +3,8 @@ import HeroSection from '../components/HeroSection'
 import Category from '../components/Category'
 import NewArrivals from '../components/NewArrivals'
 import MarketingAdds from '../components/MarketingAdds'
+import BestSeller from '../components/BestSeller'
+import NewsLetterBox from '../components/NewsLetterBox'
 
 const Home = () => {
     return (
@@ -11,6 +13,8 @@ const Home = () => {
             <Category/>
             <NewArrivals />
             <MarketingAdds/>
+            <BestSeller/>
+            <NewsLetterBox/>
         </div>
     )
 }

@@ -19,6 +19,9 @@ import winter_icon from './winter_icon.png'
 import shopping from './shopping.png'
 import rings from './rings.png'
 import heels from './heels.png'
+import help_icon from './help_icon.png'
+import email_icon from './email_icon.png'
+import phone_icon from './phone_icon.png'
 
 import p_img1 from './p_img1.png'
 import p_img2_1 from './p_img2_1.png'
@@ -98,7 +101,10 @@ export const assets = {
     winter_icon,
     shopping,
     rings,
-    heels
+    heels,
+    help_icon,
+    email_icon,
+    phone_icon
 }
 
 export const products = [

@@ -8,6 +8,7 @@ import Contact from './pages/Contact'
 import Cart from './pages/Cart'
 import Orders from './pages/Orders'
 import Product from './pages/Product'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path='/orders' element={<Orders/>}/>
         <Route path='/product/:productId' element={<Product/>}/>
       </Routes>
+      <Footer/>
     </div>
   )
 }
