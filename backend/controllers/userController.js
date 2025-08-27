@@ -3,10 +3,11 @@ import userModel from '../models/userModel.js'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
+const createToken = (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET) // jwt.sign(payload, secret)
+}
+
 const registerUser = async (req, res) => {
-    const createToken = (id) => {
-        return jwt.sign({ id }, process.env.JWT_SECRET) // jwt.sign(payload, secret)
-    }
     try {
         const { name, email, password } = req.body
         if (!name || !email || !password) {
@@ -43,21 +44,33 @@ const registerUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
     try {
-    const { email, password } = req.body
-    if (!email || !password) return res.json({ success: false, message: "incomplete credentials" })
-    const user = await userModel.findOne({ email })
-    if (!user) return res.json({ success: false, message: "user does'nt exist - please sign up" })
-    const isMatch = await bcrypt.compare(password, user.password)
-if (!isMatch) return res.json({success:false, message: "invalid credentials"})
-const token = createToken(user._id)
-res.json({success:true, message:"login successfully", token})
+        const { email, password } = req.body
+        if (!email || !password) return res.json({ success: false, message: "incomplete credentials" })
+        const user = await userModel.findOne({ email })
+        if (!user) return res.json({ success: false, message: "user does'nt exist - please sign up" })
+        const isMatch = await bcrypt.compare(password, user.password)
+        if (!isMatch) return res.json({ success: false, message: "invalid credentials" })
+        const token = createToken(user._id)
+        res.json({ success: true, message: "login successfully", token })
     } catch (error) {
         console.log(error)
-        res.json({success:false, message:error.message})
+        res.json({ success: false, message: error.message })
     }
 }
 
 const adminLogin = async (req, res) => {
+    try {
+        const { email, password } = req.body
+        if (!email || !password) return res.json({ success: false, message: "Incomplete credentials" })
+        if (email !== process.env.ADMIN_EMAIL || password !== process.env.ADMIN_PASSWORD) {
+            return res.json({ success: false, message: "Invalid credentials" })
+        }
+        const token = jwt.sign(email + password, process.env.JWT_SECRET)
+        res.json({ success: true, message: "Login successful", token })
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, message: error.message })
+    }
 
 }
 
