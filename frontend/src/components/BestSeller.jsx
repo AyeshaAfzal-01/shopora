@@ -14,7 +14,7 @@ const BestSeller = () => {
     }, [products])
     return (
         <div className='mt-12 px-4 lg:px-12'>
-             <h2 className='text-lg sm:text-3xl font-bold mb-3 sm:mb-5'>Shop by Category</h2>
+             <h2 className='text-lg sm:text-3xl font-bold mb-3 sm:mb-5'>Bestseller Products</h2>
              <div className='grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3'>
                 {
                     bestSeller.map((item, index) => (
