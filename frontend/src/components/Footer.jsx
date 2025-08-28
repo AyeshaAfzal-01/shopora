@@ -2,8 +2,8 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <div className='bg-sky-700 sm:px-2 xl:px-12 mt-12 -mb-12 lg:h-[60vh] xl:h-[40vh]  text-slate-200 text-xs'>
-            <div className='flex p-6 2xl:p-12 items-center justify-between lg:flex-row flex-wrap flex-col gap-4'>
+        <div className='bg-sky-700 sm:px-2 xl:px-12 mt-12 -mb-12  lg:h-[60vh] xl:h-[40vh]  text-slate-200 text-xs'>
+            <div className='flex p-6 2xl:p-12 items-center  justify-between lg:flex-row flex-wrap flex-col gap-4'>
                 <div className='flex flex-col items-start gap-5 lg:w-[20%] xl:w-[30%] 2xl:w-[40%]'>
                     <h2 className='text-xl lg:text-5xl xl:text-7xl 2xl:text-9xl font-bold'>Shopora.</h2>
                     <p> iste molestias qui ipsam, assumenda fugiat beatae!Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex illum nobis possimus numquam eum suscipit repellat ipsum? Laudantium officia optio fugit nostrum, expedita sequi sint vel ipsam velit corporis maxime incidunt, aliquid accusantium eum vitae provident. Est eveniet praesentium deserunt eos omnis adipisci impedit sapiente ad nemo, quo tempore consequatur?</p>

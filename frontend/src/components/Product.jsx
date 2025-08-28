@@ -7,7 +7,7 @@ const Product = ({product}) => {
         <div className='bg-gray-50 rounded-lg border border-gray-200 pb-2'>
         <img className='mb-2 w-40 sm:w-full' src={product.image[0]} alt="" />
         <div className='flex flex-col gap-2 px-2'>
-        <p className='font-medium text-xs md:text-sm xl:text-lg'>{product.name}</p>
+        <p className='font-medium text-xs md:text-sm'>{product.name}</p>
         <div>
         <p className='text-sky-500 text-sm md:text-lg font-bold'>{currency}{product.price}</p>
         </div>

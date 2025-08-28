@@ -5,9 +5,9 @@ import { assets } from '../assets/assets'
 const Navbar = () => {
     const [menuVisible, setMenuVisible] = useState(false)
     return (
-        <div className='flex justify-between px-4 lg:px-20 py-3 items-center'>
+        <div className='flex sticky top-0 bg-gray/60 backdrop-blur-sm drop-shadow-2xl back z-50 justify-between px-4 lg:px-20 py-3 items-center'>
             <NavLink to='/' className='text-sky-500 text-2xl font-semibold'>Shopora</NavLink>
-            <ul className='hidden sm:flex gap-8 text-gray-600 text-sm font-medium'>
+            <ul className='hidden z-50 sm:flex gap-8 text-gray-600 text-sm font-medium'>
                 <NavLink className='flex flex-col items-center' to='/'><p>HOME</p>
                     <hr className='h-[1.5px] w-2/4 border-none bg-gray-600 hidden' />
                 </NavLink>
@@ -54,6 +54,7 @@ const Navbar = () => {
                    </div>
                 </div>
                 }
+                
         </div>
     )
 }
