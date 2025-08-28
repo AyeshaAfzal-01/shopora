@@ -1,28 +1,33 @@
 import React, { useContext, useState } from 'react'
 import { assets } from '../assets/assets'
-import {ShopContext} from '../context/ShopContext'
 import Product from '../components/Product'
-
+import { ShopContext } from '../context/ShopContext'
 const Collection = () => {
     const [showFilter, setShowFilter] = useState(false)
     const {products} = useContext(ShopContext)
     return (
-        <div className='text-gray-700 flex'>
-            <div onClick={() => setShowFilter(!showFilter)} className={`flex items-center md:hidden gap-1 ${showFilter ? "hidden" : ""}`}>
-                <h2>Filters</h2>
-                <img className='w-1' src={assets.dropdown_icon} alt="" />
+    <div className='text-gray-700 text-sm relative px-4'>
+        <div className='flex justify-between'>
+            <div onClick={()=>setShowFilter(true)} className='flex gap-2 items-center justify-center cursor-pointer'>
+                <h2 className='font-medium text-lg'>Filters</h2>
+               <img className='w-3 h-3 object-contain' src={assets.dropdown_icon} alt="" />
             </div>
 
+                <div className='md:px-4'>
+                <select className='border border-gray-300 px-2 py-2'>
+                    <option value="high to low">High to Low</option>
+                    <option value="low to high">Low to High</option>
+                    <option value="relative">Relative</option>
+                </select>
+            </div>
+        </div>
 
-            <div className={`${showFilter ? "" : "hidden"} md:block -mb-12 -ml-2 flex flex-col gap-2 min-w-[15vw] px-2 py-4 min-h-screen  border-r-2 border-gray-300`}>
-                <div className='flex justify-between'>
-                    <h2 className='text-lg font-semibold'>Filters</h2>
-                    <div onClick={() => setShowFilter(false)} className='flex gap-2 md:hidden '>
-                        <p>Back</p>
-                        <img className='w-2' src={assets.dropdown_icon} alt="" />
-                    </div>
-                </div>
-
+        <div className={`w-[60vw] md:w-[40vw] lg:w-[20vw] px-4 py-4 bg-white h-full fixed top-0 left-0 z-50 shadow-lg  transition-transform duration-300 ${showFilter ? "translate-x-0" : "-translate-x-full"}`}>
+            <div className='flex justify-between mb-2'>
+                <h2 className='font-medium text-lg'>Filters</h2>
+                <div onClick={()=>setShowFilter(false)} className='flex gap-2 cursor-pointer items-center justify-center'><p>Back</p> <img className='w-3 h-3 object-contain' src={assets.dropdown_icon} alt="" /></div>
+            </div>
+           
                 <div className='flex flex-col text-sm gap-2 '>
                     <h3 className='text-lg font-medium'>Shop for</h3>
                     <label className='flex items-center gap-2' htmlFor="women">
@@ -62,25 +67,17 @@ const Collection = () => {
                         <p>Dresses</p>
                     </label>
                 </div>
-            </div>
+        </div>
 
-            {/* Products */}
-            <div className='grid xl:grid-cols-5 gap-4 mt-12 px-8'>
+              {/* Products */}
+            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4  2xl:grid-cols-5 gap-4 mt-12 md:px-8'>
                 {
                     products.map((item, index)=> (
                         <Product product={item}/>
                     ))
                 }
             </div>
-
-            <div className='px-4'>
-                <select className='border border-gray-300 px-2 py-2'>
-                    <option value="high to low">High to Low</option>
-                    <option value="low to high">Low to High</option>
-                    <option value="relative">Relative</option>
-                </select>
-            </div>
-        </div>
+    </div>
     )
 }
 
