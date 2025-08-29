@@ -5,9 +5,10 @@ import ShopContextProvider from './context/ShopContext'
 import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <ShopContextProvider>
+  
   <BrowserRouter>
+  <ShopContextProvider>
     <App />
+    </ShopContextProvider>
   </BrowserRouter>,
-  </ShopContextProvider>
 )

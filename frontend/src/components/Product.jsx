@@ -2,9 +2,9 @@ import React, { useContext } from 'react'
 import { ShopContext } from '../context/ShopContext'
 
 const Product = ({product}) => {
-    const {currency} = useContext(ShopContext)
+    const {currency, navigate} = useContext(ShopContext)
     return (
-        <div className='bg-gray-50 rounded-lg border border-gray-200 pb-2'>
+        <div   onClick={() => navigate(`/product/${product._id}`)} className='bg-gray-50 rounded-lg border border-gray-200 pb-2'>
         <img className='mb-2 w-40 sm:w-full' src={product.image[0]} alt="" />
         <div className='flex flex-col gap-2 px-2'>
         <p className='font-medium text-xs md:text-sm'>{product.name}</p>
