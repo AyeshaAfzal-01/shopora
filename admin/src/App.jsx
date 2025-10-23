@@ -24,12 +24,11 @@ const App = () => {
         <div className='bg-gray-50 min-h-screen'>
           <Navbar setToken={setToken}/>
           <hr className=' h-[1.5px] border-none bg-gray-300' />
-          <Home/>
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/add' element={<Add />} />
-            <Route path='/list' element={<List />} />
-            <Route path='/orders' element={<Orders />} />
+            <Route path='/add' element={<Add  token={token}/>} />
+            <Route path='/list' element={<List />}  token={token}/>
+            <Route path='/orders' element={<Orders token={token} />} />
           </Routes>
         </div>
       }
