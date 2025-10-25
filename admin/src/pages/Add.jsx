@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import {assets} from '../assets/assets'
+import {toast} from 'react-toastify'
+import { backendUrl } from '../App'
+import axios from 'axios'
 
 const Add = ({token}) => {
     const [image1, setImage1] = useState(null)
     const [image2, setImage2] = useState(null)
     const [image3, setImage3] = useState(null)
     const [image4, setImage4] = useState(null)
-    const [pname, setPname] = useState(null)
-    const [description, setDescription] = useState(null)
-    const [price, setPrice] = useState(null)
+    const [pname, setPname] = useState('')
+    const [description, setDescription] = useState('')
+    const [price, setPrice] = useState('')
     const [sizes, setSizes] = useState([])
-    const [bestseller, setBestseller] = useState(null)
+    const [bestseller, setBestseller] = useState(false)
     const [category, setCategory] = useState('Women')
     const [subCategory, setSubCategory] = useState('Topwear')
     const [allSizes, setAllSizes] = useState(['XXS', 'XS', 'S', 'M', 'L', 'XL'])
@@ -23,15 +26,49 @@ const Add = ({token}) => {
         }
     }
 
+    const submitHandler = async (event) => {
+        event.preventDefault()
+        if (!image1 && !image2 && !image3 && !image4) {
+            toast.error('Upload atleast one product image!')
+            return
+        }
+        if (sizes.length === 0) {
+            toast.error('Add product size!')
+            return
+        }
+        try {
+            let formData = new FormData()
+            formData.append("name", pname)
+            formData.append("description", description)
+            formData.append("price", price)
+            formData.append("category", category)
+            formData.append("subCategory", subCategory)
+            formData.append("bestseller", bestseller)
+            formData.append("sizes", JSON.stringify(sizes))
+
+            if (image1) formData.append("image1", image1)
+            if (image2) formData.append("image2", image2)
+            if (image3) formData.append("image3", image3)
+            if (image4) formData.append("image4", image4)
+
+                const response = await axios.post(backendUrl + '/api/product/add', formData, {headers:{token}})
+                console.log(response)
+
+              toast.success('Submission successful!')
+        } catch (error) {
+
+        }
+    }
+
     return (
         <div className='mt-8 mx-12 text-gray-800'>
             <h2 className='text-3xl font-bold text-gray-800'>Add Product</h2>
-            <form action="">
+            <form onSubmit={e=>submitHandler(e)}>
                 <div className='flex flex-col gap-2'>
                 <p className='my-2'>Upload Images</p>
                 <div className='flex gap-2'>
                 <label htmlFor="image1">
-                    <img className='w-20' src={!image1 ? assets.upload_area : URL.createObjectURL({image1})} alt="img1Uploader" />
+                    <img className='w-20' src={!image1 ? assets.upload_area : URL.createObjectURL(image1)} alt="img1Uploader" />
                     <input onChange={(e) => setImage1(e.target.files[0])} type="file" id="image1" hidden/>
                 </label>
 
@@ -96,8 +133,8 @@ const Add = ({token}) => {
                     <p className='mb-2'>Select Size</p>
                     <div className='flex gap-3'>
                     {
-                        allSizes.map((size) => (
-                            <div onClick={()=>handleSizeClick(size)} className={`px-3 py-1 cursor-pointer rounded ${sizes.includes(size) ? "bg-[#C586A5]" : "bg-slate-200"}`}>{size}</div>
+                        allSizes.map((size, index) => (
+                            <div key={index} onClick={()=>handleSizeClick(size)} className={`px-3 py-1 cursor-pointer rounded ${sizes.includes(size) ? "bg-[#C586A5]" : "bg-slate-200"}`}>{size}</div>
                         ))
                     }
                     </div>

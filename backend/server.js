@@ -3,6 +3,7 @@ import userRouter from './routes/userRouter.js'
 import connectDB from './config/mongodb.js'
 import dotenv from "dotenv"
 import cors from 'cors'
+import productRouter from './routes/productRoute.js'
 
 const app = express()
 const port = process.env.PORT || 4000
@@ -13,6 +14,7 @@ app.use(express.json()) // middleware to parse JSON req bodies
 app.use(cors())
 
 app.use('/api/user', userRouter)
+app.use('/api/product', productRouter)
 
 app.get('/', (req, res) => {
     res.send("API working")
