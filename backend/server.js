@@ -12,6 +12,7 @@ dotenv.config()
 connectDB()
 connectCloudinary()
 
+app.use(cors())
 app.use(express.json()) // middleware to parse JSON req bodies
 app.use(cors())
 

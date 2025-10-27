@@ -50,13 +50,15 @@ const Add = ({ token }) => {
             if (image2) formData.append("image2", image2)
             if (image3) formData.append("image3", image3)
             if (image4) formData.append("image4", image4)
+                console.log(backendUrl)
 
             const response = await axios.post(backendUrl + '/api/product/add', formData, { headers: { token } })
             if (response.data.success) {
                 toast.success('Submission is successful!')
             }
         } catch (error) {
-
+            console.log(error)
+            toast.error(error.response?.data?.message || "Something went wrong!")
         }
     }
 
