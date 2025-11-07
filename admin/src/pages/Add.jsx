@@ -55,7 +55,6 @@ const Add = ({ token }) => {
             const response = await axios.post(backendUrl + '/api/product/add', formData, { headers: { token } })
             if (response.data.success) {
                 toast.success('Submission is successful!')
-                console.log(response)
             }
         } catch (error) {
             console.log(error)
