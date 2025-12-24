@@ -5,7 +5,13 @@ const connectDB = async () => {
     console.log("DB Connected")
    }) 
 
-   await mongoose.connect(`${process.env.MONGODB_URL}/shopora`)
+  mongoose.connect(`${process.env.MONGODB_URL}/shopora`)
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => {
+    console.error("MongoDB error:", err.message);
+    process.exit(1);
+  });
+
 }
 
 export default connectDB

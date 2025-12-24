@@ -5,11 +5,11 @@ import { assets } from '../assets/assets'
 const HeroSection = () => {
   return (
    <div className='relative h-[35vh] md:h-[80vh] lg:h-[90vh] xl:h-[93vh] overflow-hidden rounded-xl bg-gray-700 shadow-lg'>
-    <img className='w-full h-full object-cover rounded-xl' src={assets.hero} alt="" />
+    <img className='w-full h-full object-cover rounded-xl' src={assets.hero10} alt="" />
     <div className='absolute inset-0 bg-gradient-to-b from-black/90 via-black/20 to-black/90'></div>
 
     <div className='absolute top-[60%] xl:top-[55%] pl-4 md:pl-8 xl:pl-12 text-white'>
-      <h1 className='text-sky-500 text-4xl lg:text-9xl xl:text-[14rem] md:text-8xl font-bold md:font-bold drop-shadow-xl md:mb-1'>Shopora</h1>
+      <h1 className='text-sky-500 text-4xl lg:text-9xl xl:text-[12rem] md:text-8xl font-bold md:font-bold drop-shadow-xl'>Shopora</h1>
       <p className='text-lg md:text-3xl xl:text-5xl font-medium'>Pure Elegance</p>
     </div>
 
