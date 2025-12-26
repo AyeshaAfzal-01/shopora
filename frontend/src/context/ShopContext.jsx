@@ -47,7 +47,8 @@ const ShopContextProvider = (props) => {
         searchText,
         setSearchText,
         token,
-        setToken
+        setToken,
+        backendUrl
     }
 
     return (

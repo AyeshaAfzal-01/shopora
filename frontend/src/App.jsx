@@ -10,10 +10,12 @@ import Orders from './pages/Orders'
 import Product from './pages/Product'
 import Footer from './components/Footer'
 import Login from './pages/Login'
+import { ToastContainer } from 'react-toastify'
 
 const App = () => {
   return (
     <div className='px-2'>
+      <ToastContainer/>
       <Navbar/>
       <Routes>
         <Route path='/' element={<Home/>}/>
