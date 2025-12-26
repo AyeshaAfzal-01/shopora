@@ -6,6 +6,7 @@ const addProduct = async (req, res) => {
         if (!name || !description || !price || !category || !subCategory || !sizes) {
             return res.json({success: false, message: "incomplete product credentials"})
         }
+        
        const priceNum = Number(price)
         if (isNaN(priceNum) || priceNum <= 0) {
             return res.json({success:false, message: "Enter valid price"})
@@ -37,7 +38,7 @@ const addProduct = async (req, res) => {
             name, 
             description,
             price: priceNum,
-            sizes: JSON.parse(sizes),
+            size: JSON.parse(sizes),
             bestseller: bestseller || false,
             category,
             subCategory,

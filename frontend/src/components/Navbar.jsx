@@ -5,7 +5,14 @@ import {ShopContext} from '../context/ShopContext'
 
 const Navbar = () => {
     const [menuVisible, setMenuVisible] = useState(false)
-    const {showSearch, setShowSearch, searchText, setSearchText, navigate} = useContext(ShopContext)
+    const {showSearch, setShowSearch, searchText, setSearchText, setToken, setCartItems, navigate} = useContext(ShopContext)
+
+    const logout = () => {
+        navigate('/login')
+        localStorage.removeItem('token')
+        setToken('')
+        setCartItems({})
+    }
 
     useEffect(() => {
         if (showSearch) {
@@ -38,7 +45,7 @@ const Navbar = () => {
                     <div className='flex flex-col gap-1'>
                         <Link className='cursor-pointer hover:text-blue-500 text-md font-medium'>My profile</Link>
                         <Link to='/orders' className='cursor-pointer hover:text-blue-500 text-md font-medium'>Orders</Link>
-                        <Link className='cursor-pointer hover:text-blue-500 text-md font-medium'>Logout</Link>
+                        <p onClick={() => logout()} className='cursor-pointer hover:text-blue-500 text-md font-medium'>Logout</p>
                         </div>
                     </div>
                 </div>

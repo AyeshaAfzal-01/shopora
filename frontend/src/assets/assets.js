@@ -32,6 +32,8 @@ import hero7 from './hero7.jpg'
 import hero8 from './hero8.jpg'
 import hero9 from './hero9.jpg'
 import hero10 from './hero10.jpg'
+import star_icon from './star_icon.png'
+import star_dull_icon from './star_dull_icon.png'
 
 import p_img1 from './p_img1.png'
 import p_img2_1 from './p_img2_1.png'
@@ -90,6 +92,7 @@ import p_img51 from './p_img51.png'
 import p_img52 from './p_img52.png'
 
 
+
 export const assets = {
     search_icon,
     cart_icon,
@@ -124,7 +127,9 @@ export const assets = {
     heels,
     help_icon,
     email_icon,
-    phone_icon
+    phone_icon,
+    star_icon,
+    star_dull_icon
 }
 
 export const products = [

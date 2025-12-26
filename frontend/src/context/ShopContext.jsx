@@ -9,10 +9,15 @@ const ShopContextProvider = (props) => {
     const [showSearch, setShowSearch] = useState(false)
     const [searchText, setSearchText] = useState(null)
     const [products, setProducts] = useState([])
+    const [token, setToken] = useState('')
 
     const currency = '$'
     const backendUrl = import.meta.env.VITE_BACKEND_URL
     const navigate = useNavigate()
+
+    const addToCart = async (itemId, size) => {
+
+    }
 
     
     const getProductsFromBackend = async () => {
@@ -40,7 +45,9 @@ const ShopContextProvider = (props) => {
         showSearch,
         setShowSearch,
         searchText,
-        setSearchText
+        setSearchText,
+        token,
+        setToken
     }
 
     return (
