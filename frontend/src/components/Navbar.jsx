@@ -5,7 +5,7 @@ import {ShopContext} from '../context/ShopContext'
 
 const Navbar = () => {
     const [menuVisible, setMenuVisible] = useState(false)
-    const {showSearch, setShowSearch, searchText, setSearchText, setToken, setCartItems, navigate} = useContext(ShopContext)
+    const {showSearch, setShowSearch, searchText, setSearchText, getCartCount, setToken, setCartItems, navigate} = useContext(ShopContext)
 
     const logout = () => {
         navigate('/login')
@@ -51,7 +51,7 @@ const Navbar = () => {
                 </div>
                 <Link to='/cart' className='relative'>
                 <img className='w-5 cursor-pointer' src={assets.cart_icon} alt="" />
-                <p className='bg-red-700 absolute text-white rounded-full w-5 h-5 flex items-center justify-center text-xs top-3 left-2'>10</p>
+                <p className='bg-red-700 absolute text-white rounded-full w-5 h-5 flex items-center justify-center text-xs top-3 left-2'>{getCartCount()}</p>
                 </Link>
                 <img onClick={() => setMenuVisible(true)} className='w-4 block sm:hidden' src={assets.menu_icon} alt='' />
             </div>

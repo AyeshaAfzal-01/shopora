@@ -11,7 +11,6 @@ const RelatedProducts = ({category, subCategory}) => {
             let productsCopy = products.slice()
             productsCopy = productsCopy.filter((item) => category === item.category)
             productsCopy = productsCopy.filter((item )=> subCategory === item.subCategory)
-           console.log(productsCopy.slice(0, 5)) // will display only five products
            setRelatedProducts(productsCopy.slice(0, 5))
         }
     }, [products])

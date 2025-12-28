@@ -9,7 +9,6 @@ const BestSeller = () => {
         if (products.length > 0) {
             let seller = products.filter((item) => item.bestseller)
             setBestSeller(seller.slice(0,6))
-            console.log(seller)
         }
     }, [products])
     return (
