@@ -15,6 +15,7 @@ import ascessory_icon from './ascessory_icon.png'
 import skincare_icon from './skincare_icon.png'
 import sports_icon from './sports_icon.png'
 import topwear_icon from './topwear_icon.png'
+import stripe_logo from './stripe_logo.png'
 import winter_icon from './winter_icon.png'
 import shopping from './shopping.png'
 import rings from './rings.png'
@@ -34,6 +35,7 @@ import hero9 from './hero9.jpg'
 import hero10 from './hero10.jpg'
 import star_icon from './star_icon.png'
 import star_dull_icon from './star_dull_icon.png'
+import about from './about.jpg'
 
 import p_img1 from './p_img1.png'
 import p_img2_1 from './p_img2_1.png'
@@ -122,6 +124,7 @@ export const assets = {
     sports_icon,
     topwear_icon,
     winter_icon,
+    stripe_logo,
     shopping,
     rings,
     heels,
@@ -129,7 +132,8 @@ export const assets = {
     email_icon,
     phone_icon,
     star_icon,
-    star_dull_icon
+    star_dull_icon,
+    about
 }
 
 export const products = [

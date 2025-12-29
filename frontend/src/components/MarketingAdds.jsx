@@ -1,8 +1,11 @@
 import React from 'react'
 import { assets } from '../assets/assets'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { ShopContext } from '../context/ShopContext'
 
 const MarketingAdds = () => {
+    const {navigate} = useContext(ShopContext)
     return (
         <div className='flex flex-col lg:flex-row px-4 lg:px-12 justify-center items-center gap-2 lg:h-[60vh] md:h-[100vh] h-[80vh] text-gray-700'>
             <div className='lg:w-[50%] w-full h-[40vh] md:h-[50vh] lg:h-[60vh] bg-sky-300 rounded-lg relative'>
@@ -24,14 +27,14 @@ const MarketingAdds = () => {
                     <div>
                         <p className='text-xs sm:text-sm font-semibold'>Timeless Elegance</p>
                         <h3 className='md:text-4xl leading-tight lg:text-xl 2xl:text-4xl font-semibold'>Discover our accessories collection</h3>
-                           <button className='px-2 text-xs sm:text-sm sm:px-4 py-1 sm:py-2 bg-sky-300 hover:bg-sky-400 text-white drop-shadow-2xl rounded-lg mt-3'>Shop Now</button>
+                           <button onClick={()=>navigate('/collection')} className='px-2 text-xs sm:text-sm sm:px-4 py-1 sm:py-2 bg-sky-300 hover:bg-sky-400 text-white drop-shadow-2xl rounded-lg mt-3'>Shop Now</button>
                     </div>
                 </div>
                 <div className='h-[50%] p-8 rounded-lg bg-slate-100 justify-between relative flex items-center gap-4 sm:gap-12'>
                     <div>
                         <p className='text-xs sm:text-sm font-semibold'>Wear your confidence</p>
                         <h3 className='md:text-4xl leading-tight lg:text-xl 2xl:text-4xl font-semibold'>Explore our shoes collection</h3>
-                        <button className='px-2 text-xs sm:text-sm sm:px-4 py-1 sm:py-2 bg-sky-300 hover:bg-sky-400 text-white drop-shadow-2xl rounded-lg mt-3'>Shop Now</button>
+                        <button onClick={()=>navigate('/collection')} className='px-2 text-xs sm:text-sm sm:px-4 py-1 sm:py-2 bg-sky-300 hover:bg-sky-400 text-white drop-shadow-2xl rounded-lg mt-3'>Shop Now</button>
                     </div>
                     <img className='w-15 md:w-36 lg:w-24 xl:w-36 xl:absolute xl:right-8' src={assets.heels} alt="" />
                 </div>
