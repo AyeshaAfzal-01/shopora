@@ -26,11 +26,11 @@ const placeOrderCOD = async (req, res) => {
         await newOrder.save()
 
         await userModel.findByIdAndUpdate(userId, { cartData: {} }) // after placing order update user cart to empty
-        res.json({ success: true, message: "COD order placed" })
+        res.status(200).json({ success: true, message: "COD order placed" })
 
     } catch (error) {
         console.log(error)
-        return res.json({ success: false, message: error.message })
+        return res.status(500).json({ success: false, message: error.message })
     }
 }
 

@@ -11,18 +11,18 @@ const registerUser = async (req, res) => {
     try {
         const { name, email, password } = req.body
         if (!name || !email || !password) {
-            return res.json({ success: false, message: "incomplete credentials" })
+            return res.status(400).json({ success: false, message: "incomplete credentials" })
         }
 
         const exists = await userModel.findOne({ email })
         if (exists) {
-            return res.json({ success: false, message: "Email already exists" })
+            return res.status(401).json({ success: false, message: "Email already exists" })
         }
-        if (!validator.isEmail(email)) {
+        if (!validator.status(401).isEmail(email)) {
             return res.json({ success: false, message: "not a valid email" })
         }
         if (password.length < 8) {
-            return res.json({ success: false, message: "Please use a strong password" })
+            return res.status(401).json({ success: false, message: "Please use a strong password" })
         }
 
         const salt = await bcrypt.genSalt(10) // hashing the password
@@ -35,10 +35,10 @@ const registerUser = async (req, res) => {
         })
         await newUser.save()
         const token = createToken(newUser._id)
-        res.json({ success: true, message: "user registered", token })
+        res.status(200).json({ success: true, message: "user registered", token })
     } catch (error) {
         console.log(error)
-        res.json({ success: false, message: error.message })
+        res.status(500).json({ success: false, message: error.message })
     }
 }
 
@@ -51,10 +51,10 @@ const loginUser = async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password)
         if (!isMatch) return res.json({ success: false, message: "invalid credentials" })
         const token = createToken(user._id)
-        res.json({ success: true, message: "login successfully", token })
+        res.status(200).json({ success: true, message: "login successfully", token })
     } catch (error) {
         console.log(error)
-        res.json({ success: false, message: error.message })
+        res.status(500).json({ success: false, message: error.message })
     }
 }
 
@@ -63,13 +63,13 @@ const adminLogin = async (req, res) => {
         const { email, password } = req.body
         if (!email || !password) return res.json({ success: false, message: "Incomplete credentials" })
         if (email !== process.env.ADMIN_EMAIL || password !== process.env.ADMIN_PASSWORD) {
-            return res.json({ success: false, message: "Invalid credentials" })
+            return res.status(401).json({ success: false, message: "Invalid credentials" })
         }
         const token = jwt.sign(email + password, process.env.JWT_SECRET)
-        res.json({ success: true, message: "Login successful", token })
+        res.status(200).json({ success: true, message: "Login successful", token })
     } catch (error) {
         console.log(error)
-        res.json({ success: false, message: error.message })
+        res.status(500).json({ success: false, message: error.message })
     }
 
 }

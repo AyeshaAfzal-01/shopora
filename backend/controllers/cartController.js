@@ -16,10 +16,10 @@ const addToCart = async (req, res) => {
             cartData[itemId][size] = 1
         }
         await userModel.findByIdAndUpdate(userId, {cartData})
-        res.json({success: true, message: 'product added to cart'})
+        res.status(200).json({success: true, message: 'product added to cart'})
     } catch (error) {
         console.log(error)
-        res.json({success:false, message:error.message})
+        res.status(500).json({success:false, message:error.message})
     }
 }
 
@@ -32,7 +32,7 @@ const updateCart = async (req, res) => {
         await userModel.findByIdAndUpdate(userId, {cartData})
     } catch (error) {
         console.log(error)
-        res.json({success:false, message:error.message})
+        res.status(500).json({success:false, message:error.message})
     }
 }
 
@@ -41,10 +41,10 @@ const getUserCart = async (req, res) => {
         const {userId} = req.body
         const userData = await userModel.findById(userId)
         const cartData = await userData.cartData
-        res.json({success:true, message: 'cart data fetched', cartData})
+        res.status(200).json({success:true, message: 'cart data fetched', cartData})
     } catch (error) {
         console.log(error)
-        res.json({success:false, message:error.message})
+        res.status(500).json({success:false, message:error.message})
     }
 }
 

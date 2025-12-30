@@ -9,7 +9,7 @@ const addProduct = async (req, res) => {
         
        const priceNum = Number(price)
         if (isNaN(priceNum) || priceNum <= 0) {
-            return res.json({success:false, message: "Enter valid price"})
+            return res.status(400).json({success:false, message: "Enter valid price"})
         }
 
         // uploading images to cloudinary
@@ -31,7 +31,7 @@ const addProduct = async (req, res) => {
         const result = await Promise.all(files.map(file => uploadToCloudinary(file)))
         const images = result.map(r => r.secure_url)
         if (images.length === 0) {
-            return res.json({success: false, message: "no product image added"})
+            return res.status(400).json({success: false, message: "no product image added"})
         }
 
         const newProduct = new productModel({
@@ -47,30 +47,30 @@ const addProduct = async (req, res) => {
         })
 
         await newProduct.save()
-        res.json({success: true, message: 'product saved to db'})
+        res.status(200).json({success: true, message: 'product saved to db'})
     } catch (error) {
         console.log(error)
-        return res.json({success: false, message: error.message})
+        return res.status(500).json({success: false, message: error.message})
     }
 }
 
 const listProducts = async (req, res) => {
     try {
         const products = await productModel.find()
-        res.json({success:true, message:"All products fetched successfuly from DB", products})
+        res.status(200).json({success:true, message:"All products fetched successfuly from DB", products})
     } catch (error) {
         console.log(error)
-        res.json({success:false, message:error.message})
+        res.status(500).json({success:false, message:error.message})
     }
 }
 
 const removeProduct = async (req, res) => {
     try {
         await productModel.findByIdAndDelete(req.body.id)
-        res.json({success:true, message: 'Product removed'})
+        res.status(200).json({success:true, message: 'Product removed'})
     } catch(error) {
         console.log(error)
-        res.json({success:false, message: error.message})
+        res.status(500).json({success:false, message: error.message})
     }
 }
 
