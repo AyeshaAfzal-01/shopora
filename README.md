@@ -1,4 +1,4 @@
-# 🛒 Shopora: Full Stack E-Commerce Website (MERN)
+# Shopora: Full Stack E-Commerce Website (MERN)
 
 Shopora is a full stack e-commerce web application built with the MERN stack (MongoDB, Express, React, Node.js). It includes a customer storefront, an admin dashboard for managing the store, and a REST API backend.
 
