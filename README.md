@@ -1,4 +1,4 @@
-# 🛒 E-Commerce Website (React)
+# E-Commerce Website (React)
 
 A front-end e-commerce web app built with React.
 
@@ -26,8 +26,8 @@ npm start
 ```
 
 ## Screenshots
-![Home page](screenshots/home.png)
-![Cart](screenshots/cart.png)
+![Home page](frontend/src/assets/ecommerce-website.png)
+![Cart](frontend/src/assets/shopora-theta.vercel.app.png)
 
 ## Live Demo
 [Add link here]
